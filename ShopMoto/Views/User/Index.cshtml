@@ -1,0 +1,72 @@
+﻿@model LoginViewModel 
+
+    <section class="account">
+        <div class="container account__container">
+            <div class="account__top">
+                <div class="account__image">
+                    <img src="" alt="">
+                </div>
+                <div class="account__descr">
+                    <div class="account__nickname">@*@Model.UserName*@</div>
+                    <div class="account__fullname">@*@Model.FirstName @Model.LastName*@</div>
+                    <div class="account__register-date">На сайте с 01.01.2021</div>
+                </div>
+            </div>
+            <div class="account__body">
+                <nav class="account__tabs">
+                    <button href="/User/Index" class="account__tab-btn" type="button" data-account-tab="#info">Профиль</button>
+                    <button class="account__tab-btn _active" type="button" data-account-tab="#settings">Настройки</button>
+                  
+                </nav>
+                <div class="account__content">
+                    <div class="account__tab-item account__info" id="info">
+                        Что-то 1
+                    </div>
+                    <div class="account__tab-item account__settings _active" id="settings">
+                        <form asp-controller="User" asp-action="Index" method="POST" class="account__form form">
+                            <div class="form__line">
+                                <label for="name" class="form__label">Ваше имя:</label>
+                                <input asp-for="@Model.FirstName" type="text" class="form__input" id="name" name="name">
+                            </div>
+                            <div class="form__line">
+                                <label for="surname" class="form__label">Фамилия:</label>
+                                <input asp-for="@Model.LastName" type="text" class="form__input" id="surname" name="surname">
+                            </div>
+                            <div class="form__line">
+                                <label for="name" class="form__label">Ваш номер телефона:</label>
+                                <input asp-for="@Model.Phone" type="text" class="form__input" id="name" >
+                            </div>
+                            <div class="form__line">
+                                <label for="gender" class="form__label">Ваш пол:</label>
+                                <div class="form__checkboxes">
+                                    <label for="man" class="form__label-radio">
+                                        <input asp-for="@Model.Gender" type="radio" value="Мужской" id="man" name="gender" checked="">
+                                        Мужской
+                                    </label>
+                                    <label for="woman" class="form__label-radio">
+                                        <input type="radio" value="Женский" id="woman" name="gender">
+                                        Женский
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form__line">
+                                <label for="country" class="form__label">Страна:</label>
+                                <input asp-for="@Model.Country" type="text" class="form__input" id="country" name="country">
+                            </div>
+                            <div class="form__line">
+                                <label for="city" class="form__label">Город:</label>
+                                <input asp-for="@Model.City" type="text" class="form__input" id="city" name="city">
+                            </div>
+                            <div class="form__line">
+                                <label for="birth" class="form__label">Дата рождения:</label>
+                                <input type="text" class="form__input" id="birth" name="birth">
+                            </div>
+                            <div class="form__line">
+                                <button class="form__submit-btn" type="submit">Сохранить</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

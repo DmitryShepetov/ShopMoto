@@ -1,0 +1,16 @@
+﻿@model Moto
+
+
+
+<li class="catalog__item item">
+    <div class="item__img">
+        <img src="@Model.imgInfo" alt="">
+    </div>
+    <h2 class="item__title">Модель: @Model.name</h2>
+    <p class="item__descr">@Model.shortDesc</p>
+    <p class="item__price">Цена: @Model.price.ToString("C", CultureInfo.CreateSpecificCulture("en-US"))</p>
+    <div class="item__btns">
+        <a asp-controller="ShopCart" asp-action="addToCart" asp-route-id="@Model.id" class="item__btn item__btn-type1">Добавить в корзину</a>
+        <a asp-controller="Moto" asp-action="Info" asp-route-name="@Model.name" class="item__btn item__btn-type2">Подробнее</a>
+    </div>
+</li>

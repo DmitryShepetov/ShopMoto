@@ -1,0 +1,50 @@
+﻿@model User
+
+<section class="register">
+    <div class="container register__container">
+        <h1 class="register__head-title">Создать аккаунт</h1>
+        <form method="post" class="register__form ">
+            <h3 class="register__title">Имя пользователя:</h3>
+            <div class="register__input">
+                <input type="text" asp-for="@Model.UserName" class="login__input-area">
+                <button class="register__input-reset">x</button>
+            </div>
+            <h3 class="register__title">Имя:</h3>
+            <div class="register__input">
+                <input type="text" asp-for="@Model.FirstName" class="login__input-area">
+                <button class="register__input-reset">x</button>
+            </div>
+            <h3 class="register__title">Фамилия:</h3>
+            <div class="register__input">
+                <input type="text" asp-for="@Model.LastName" class="register__input-area">
+                <button class="register__input-reset">x</button>
+            </div>
+            <h3 class="register__title">Номер телефона:</h3>
+            <div class="register__input">
+                <input type="text" asp-for="@Model.Phone" class="register__input-area">
+                <button class="register__input-reset">x</button>
+            </div>
+            <h3 class="register__title">Страна:</h3>
+            <div class="register__input">
+                <input type="text" asp-for="@Model.Country" class="register__input-area">
+                <button class="register__input-reset">x</button>
+            </div>
+            <h3 class="register__title">Город:</h3>
+            <div class="register__input">
+                <input type="text" asp-for="@Model.City" class="register__input-area">
+                <button class="register__input-reset">x</button>
+            </div>
+            <h3 class="register__title">E-Mail:</h3>
+            <div class="register__input">
+                <input type="text" asp-for="@Model.Email" class="register__input-area">
+                <button class="register__input-reset">x</button>
+            </div>
+            <h3 class="register__title">Пароль:</h3>
+            <div class="register__input">
+                <input type="password" asp-for="@Model.Password" class="register__input-area">
+                <button class="register__input-reset">x</button>
+            </div>
+            <button type="submit" class="register__btn">Регистрация</button>
+        </form>
+    </div>
+</section>

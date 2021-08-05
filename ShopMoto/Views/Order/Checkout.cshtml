@@ -1,0 +1,35 @@
+﻿@model Order
+
+    <section class="order">
+        <div class="container order__container">
+            <h1 class="order__head-title">Оформление заказа</h1>
+            <form asp-action="Checkout" class="order__form">
+                <h3 class="order__title">Имя:</h3>
+                <div class="order__input">
+                    <input asp-for="name" type="text" class="order__input-area" name="name">
+                    <button class="order__input-reset">x</button>
+                </div>
+                <h3 class="order__title">Фамилия:</h3>
+                <div class="order__input">
+                    <input asp-for="surname" type="text" class="order__input-area" name="surname">
+                    <button class="order__input-reset">x</button>
+                </div>
+                <h3 class="order__title">Адрес:</h3>
+                <div class="order__input">
+                    <input asp-for="adress" type="text" class="order__input-area" name="adress">
+                    <button class="order__input-reset">x</button>
+                </div>
+                <h3 class="order__title">Номер телефона:</h3>
+                <div class="order__input">
+                    <input asp-for="phone" type="tel" class="order__input-area" name="phone">
+                    <button class="order__input-reset">x</button>
+                </div>
+                <h3 class="order__title">E-Mail:</h3>
+                <div class="order__input">
+                    <input asp-for="email" type="text" class="order__input-area" name="email">
+                    <button class="order__input-reset">x</button>
+                </div>
+                <input type="submit" class="order__btn" placeholder="Завершить заказ">
+            </form>
+        </div>
+    </section>

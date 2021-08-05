@@ -1,0 +1,17 @@
+﻿@model HomeViewModel
+
+
+    <section class="catalog">
+        <div class="container catalog__container">
+            <h1 class="catalog__title">Лучшие мотоциклы в продаже</h1>
+            <ul class="catalog__list">
+                @{
+                    foreach (Moto moto in Model.favMoto)
+                    {
+                        @Html.Partial("AllMoto", moto)
+                    }
+                }
+            </ul>
+        </div>
+    </section>
+

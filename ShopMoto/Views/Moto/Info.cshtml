@@ -1,0 +1,13 @@
+﻿@model MotoListViewModel
+
+
+<section class="product">
+    <div class="container product__container">
+        @{ foreach (Moto moto in Model.allMoto)
+            {
+                @Html.Partial("MotoInfo", moto);
+            }
+        }
+    </div>
+</section>
+

@@ -1,0 +1,47 @@
+﻿@model LoginViewModel
+
+<section class="login">
+    <div class="container login__container">
+        <h1 class="login__head-title">Вход на сайт</h1>
+        <form asp-controller="User" asp-action="Login" method="POST" class="login__form">
+            <input hidden asp-for="@Model.returnUrl" />
+            <h3 class="login__title">E-Mail:</h3>
+            <div class="login__input">
+                <input asp-for="@Model.Email" type="text" class="login__input-area" name="email">
+                <button class="login__input-reset">x</button>
+            </div>
+            <h3 class="login__title">Пароль:</h3>
+            <div class="login__input">
+                <input asp-for="@Model.Password" type="password" class="login__input-area" name="password">
+                <button class="login__input-reset">x</button>
+            </div>
+            <button type="submit" class="login__btn">Войти</button>
+        </form>
+
+
+        <!-- НАЧАЛО -->
+        <h1 class="login__head-title">Войти с помощью</h1>
+        <div class="login__social">
+            <form asp-controller="User" asp-action="ExternalLogin" asp-route-returnUrl="@Model.returnUrl">
+                @foreach (var provider in Model.ExternalProviders)
+                {
+                    <button type="submit" name="provider" value="@provider.Name">
+                        <a href="https://www.facebook.com" class="register-facebook">
+                            <div class="social__icon">
+                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 155.139 155.139" style="enable-background:new 0 0 155.139 155.139;" xml:space="preserve">
+                                <path id="f_1_" style="fill:#fff;" d="M89.584,155.139V84.378h23.742l3.562-27.585H89.584V39.184
+                                c0-7.984,2.208-13.425,13.67-13.425l14.595-0.006V1.08C115.325,0.752,106.661,0,96.577,0C75.52,0,61.104,12.853,61.104,36.452
+                                v20.341H37.29v27.585h23.814v70.761H89.584z"></path>
+                                </svg>
+                            </div>
+                            <div class="social__text">@provider.DisplayName</div>
+                        </a>
+                    </button>
+                }
+            </form>
+        </div>
+        <!-- КОНЕЦ -->
+
+
+    </div>
+</section>

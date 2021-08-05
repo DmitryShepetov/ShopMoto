@@ -1,0 +1,23 @@
+﻿@model ShopCartViewModel
+
+
+    <section class="cart">
+        <div class="container cart__container">
+            <table class="cart__table">
+                <tr class="cart__table-tr">
+                    <th class="cart__table-th">Модель</th>
+                    <th class="cart__table-th">Цена</th>
+                </tr>
+                @foreach (var el in Model.shopCart.listShopItems)
+                {
+                    <tr class="cart__table-tr">
+                        <td class="cart__table-td">@el.moto.name </td>
+                        <td class="cart__table-td ">@el.moto.price.ToString("C", CultureInfo.CreateSpecificCulture("en-US"))</td>
+                    </tr>
+                }
+            </table>
+
+            <a asp-controller="Order" asp-action="Checkout" class="cart__btn">Оформить</a>
+        </div>
+    </section>
+

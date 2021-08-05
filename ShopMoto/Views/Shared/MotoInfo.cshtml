@@ -1,0 +1,288 @@
+﻿@model Moto
+
+
+
+<section class="product">
+    <div class="container product__container">
+        <div class="product__head">
+            <div class="product__head-left">
+                <!--ФОТО-->
+                <img src="@Model.imgInfo" alt="">
+            </div>
+            <div class="product__head-right">
+                <!--МОДЕЛЬ, ОПИСАНИЕ, ЦЕНА-->
+                <h1 class="product__title">@Model.name</h1>
+                <p class="product__descr">@Model.longDesc</p>
+                <div class="product__btns">
+                    <div class="product__price">от <span>@Model.price.ToString("C", CultureInfo.CreateSpecificCulture("en-US"))</span></div>
+                    <a asp-controller="ShopCart" asp-action="addToCart" asp-route-id="@Model.id" class="product__btn">Добавить в корзину</a>
+                </div>
+            </div>
+        </div>
+        <div class="product__info">
+            <h2 class="product__h2">Характеристики</h2>
+            <table class="product__table">
+                <tbody>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Страна производства</td>
+                        <td class="product__table-td-2"><img src="@Model.imgCountry" alt="">@Model.country</td>
+                    </tr>
+
+                    <!--ДВИГАТЕЛЬ-->
+                    <tr class="product__table-tr-h">
+                        <th class="product__table-th">Двигатель</th>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Рабочий объем</td>
+                        <td class="product__table-td-2">@Model.volume</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Кол-во цилиндров / расположение</td>
+                        <td class="product__table-td-2">@Model.number_cylinders / @Model.arrangement_cylinders</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Охлаждение</td>
+                        <td class="product__table-td-2">@Model.cooling</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Количество тактов</td>
+                        <td class="product__table-td-2">@Model.number_measures</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Клапанов на цилиндр</td>
+                        <td class="product__table-td-2">@Model.valves</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Диаметр цилиндра × Ход поршня</td>
+                        <td class="product__table-td-2">@Model.cylinder_diameter мм × @Model.piston_stroke мм</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Номинальная мощность</td>
+                        <td class="product__table-td-2">@Model.power</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Макс. крутящий момент</td>
+                        <td class="product__table-td-2">@Model.torque</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Степень сжатия</td>
+                        <td class="product__table-td-2">@Model.compression
+                        <td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Тип смесеобразования</td>
+                        <td class="product__table-td-2">@Model.mixing_type</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Система запуска</td>
+                        <td class="product__table-td-2">@Model.launch_system</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Трансмиссия</td>
+                        <td class="product__table-td-2">@Model.gear</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Сцепление</td>
+                        <td class="product__table-td-2">@Model.clutch</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Генератор</td>
+                        <td class="product__table-td-2">@Model.generator</td>
+                    </tr>
+
+                    <!--ШАССИ-->
+                    <tr class="product__table-tr-h">
+                        <th class="product__table-th">Шасси</th>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Рама</td>
+                        <td class="product__table-td-2">@Model.frame</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Привод</td>
+                        <td class="product__table-td-2">@Model.drive</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Подвеска переднего колеса</td>
+                        <td class="product__table-td-2">@Model.front_wheel_suspension</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Подвеска заднего колеса</td>
+                        <td class="product__table-td-2">@Model.rear_wheel_suspension</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Ход подвески (перед / зад)</td>
+                        <td class="product__table-td-2">@Model.front_suspension_travel мм / @Model.rear_suspension_travel мм</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Вынос передней вилки</td>
+                        <td class="product__table-td-2">@Model.front_fork_stem</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Угол наклона вилки</td>
+                        <td class="product__table-td-2">@Model.fork_tilt_angle</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Размерность диска (перед / зад)</td>
+                        <td class="product__table-td-2">@Model.front_disk_dimension" / @Model.rear_disk_dimension"</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">ABS</td>
+                        <td class="product__table-td-2">@Model.abs</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Traction Control</td>
+                        <td class="product__table-td-2">@Model.traction_control</td>
+                    </tr>
+
+                    <!--ГАБАРИТЫ-->
+                    <tr class="product__table-tr-h">
+                        <th class="product__table-th">Габариты</th>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Общая длина</td>
+                        <td class="product__table-td-2">@Model.length мм</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Колесная база</td>
+                        <td class="product__table-td-2">@Model.wheelbase мм</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Ширина по зеркалам</td>
+                        <td class="product__table-td-2">@Model.width мм</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Высота (общая / по седлу)</td>
+                        <td class="product__table-td-2">@Model.height_overall мм / @Model.height_seaddle мм</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Масса</td>
+                        <td class="product__table-td-2">@Model.weight кг</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Минимальный дорожный просвет</td>
+                        <td class="product__table-td-2">@Model.ground_clearance мм</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Максимальная нагрузка</td>
+                        <td class="product__table-td-2">@Model.maximum_load кг</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Обьем топливного бака</td>
+                        <td class="product__table-td-2">@Model.fuel_tank_volume л</td>
+                    </tr>
+
+                    <!--ПОКАЗАТЕЛИ-->
+                    <tr class="product__table-tr-h">
+                        <th class="product__table-th">Показатели</th>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Максимальная скорость</td>
+                        <td class="product__table-td-2">@Model.speed км/ч</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Расход топлива</td>
+                        <td class="product__table-td-2">@Model.fuel_consumption л на 100 км</td>
+                    </tr>
+
+                    <!--ДОПОЛНИТЕЛЬНЫЕ ОПЦИИ-->
+                    <tr class="product__table-tr-h">
+                        <th class="product__table-th">Дополнительные опции</th>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Центральная подножка</td>
+                        <td class="product__table-td-2">@Model.сenter_stand</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Подогрев ручек</td>
+                        <td class="product__table-td-2">@Model.heated_handles</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Подогрев сиденья</td>
+                        <td class="product__table-td-2">@Model.heated_seat</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Регулировка седла</td>
+                        <td class="product__table-td-2">@Model.saddle_adjustment</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Регулировка ветрового стекла</td>
+                        <td class="product__table-td-2">@Model.windscreen_adjustment</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Боковые кофры</td>
+                        <td class="product__table-td-2">@Model.side_trunks</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Центральный кофр</td>
+                        <td class="product__table-td-2">@Model.central_wardrobe_trunk</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Круиз-контроль</td>
+                        <td class="product__table-td-2">@Model.cruise_control</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Датчик давления в шинах</td>
+                        <td class="product__table-td-2">@Model.tire_pressure_sensor</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Демпфер руля</td>
+                        <td class="product__table-td-2">@Model.steering_damper</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Регулировка двигателя</td>
+                        <td class="product__table-td-2">@Model.engine_adjustment</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Регулировка подвески</td>
+                        <td class="product__table-td-2">@Model.suspension_adjustment</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Ассистент переключения передач</td>
+                        <td class="product__table-td-2">@Model.gear_shift_assistant</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Сигнализация</td>
+                        <td class="product__table-td-2">@Model.signaling</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Защита двигателя</td>
+                        <td class="product__table-td-2">@Model.engine_protection</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Защита рук</td>
+                        <td class="product__table-td-2">@Model.hand_protection</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Иммобилайзер</td>
+                        <td class="product__table-td-2">@Model.immobilizer</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Запуск без ключа</td>
+                        <td class="product__table-td-2">@Model.keyless_start</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Проскальзывающее сцепление</td>
+                        <td class="product__table-td-2">@Model.slipping_clutch</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Подключение смартфона</td>
+                        <td class="product__table-td-2">@Model.smartphone_connection</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Электронная ручка газа</td>
+                        <td class="product__table-td-2">@Model.electronic_throttle</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">LED оптика</td>
+                        <td class="product__table-td-2">@Model.led_optics</td>
+                    </tr>
+                    <tr class="product__table-tr">
+                        <td class="product__table-td-1">Цветной дисплей</td>
+                        <td class="product__table-td-2">@Model.color_display</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
