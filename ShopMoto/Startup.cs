@@ -126,23 +126,6 @@ namespace ShopMoto
                 endpoint.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 endpoint.MapControllerRoute("categoryFilter", "Moto/{action}/{category?}", defaults: new { Controller = "Moto", action = "List" });
             });
-/*            using (var scope = app.ApplicationServices.CreateScope())
-            {
-                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
-*//*                DBObjects.Initial(content);*//*
-                var user = new User
-                {
-                    UserName = "likverxmakö",
-                    Email = "likverxmaqq@mail.ru",
-                    LastName = "Shepetov",
-                    FirstName = "Dmitry"
-                };
-                var result = userManager.CreateAsync(user, "123qwe").GetAwaiter().GetResult();
-                if (result.Succeeded)
-                {
-                    userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Administrator")).GetAwaiter().GetResult();
-                }
-            }*/
         }
     }
 }
