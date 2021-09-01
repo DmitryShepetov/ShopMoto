@@ -29,7 +29,6 @@ namespace ShopMoto.Controllers
             {
                 ModelState.AddModelError("","Вы не выбрали товары!");
             }
-            Console.writeline();
             else if(ModelState.IsValid)
             {
                 allOrders.createOrder(order);
