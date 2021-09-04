@@ -8,7 +8,7 @@
                 </div>
                 <div class="account__descr">
                     <div class="account__nickname">@*@Model.UserName*@</div>
-                    <div class="account__fullname">@*@Model.FirstName @Model.LastName*@</div>
+                    <div class="account__fullname">@Model.FirstName @Model.LastName</div>
                     <div class="account__register-date">На сайте с 01.01.2021</div>
                 </div>
             </div>
@@ -26,11 +26,11 @@
                         <form asp-controller="User" asp-action="Index" method="POST" class="account__form form">
                             <div class="form__line">
                                 <label for="name" class="form__label">Ваше имя:</label>
-                                <input asp-for="@Model.FirstName" type="text" class="form__input" id="name" name="name">
+                                <input asp-for="@Model.FirstName" type="text" class="form__input" id="name" name="FirstName">
                             </div>
                             <div class="form__line">
                                 <label for="surname" class="form__label">Фамилия:</label>
-                                <input asp-for="@Model.LastName" type="text" class="form__input" id="surname" name="surname">
+                                <input asp-for="@Model.LastName" type="text" class="form__input" id="surname" name="LastName">
                             </div>
                             <div class="form__line">
                                 <label for="name" class="form__label">Ваш номер телефона:</label>

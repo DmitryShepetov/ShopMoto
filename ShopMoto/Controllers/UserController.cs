@@ -120,19 +120,15 @@ namespace ShopMoto.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(LoginViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-            usersModel.FirstName = model.FirstName;
-            usersModel.Phone = model.Phone;
-            usersModel.City = model.Country;
-            usersModel.Country = model.City;
-            usersModel.LastName = model.LastName;
-            usersModel.Gender = model.Gender;
-            appDBContext.Users.Update(usersModel);
-            appDBContext.SaveChanges();
-            return View();
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            user.FirstName = model.FirstName;
+            user.Phone = model.Phone;
+            user.City = model.Country;
+            user.Country = model.City;
+            user.LastName = model.LastName;
+            user.Gender = model.Gender;
+            var result = await _userManager.UpdateAsync(user);
+            return View(model);
         }
         [HttpPost]
         [AllowAnonymous]
@@ -147,7 +143,7 @@ namespace ShopMoto.Controllers
             var user = await _userManager.FindByEmailAsync(usersModel.Email);
             if (user == null)
             {
-                return View(userModel);
+                return View("Index");
             }
             var result = await _signInManager.PasswordSignInAsync(user, usersModel.Password, false, false);
             if (result.Succeeded)
