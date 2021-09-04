@@ -26,7 +26,6 @@ namespace ShopMoto.Controllers
         public readonly SignInManager<User> _signInManager;
         private AppDBContext appDBContext = new AppDBContext();
         public User usersModel = new User();
-
         public UserController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
@@ -121,7 +120,18 @@ namespace ShopMoto.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(LoginViewModel model)
         {
-
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            usersModel.FirstName = model.FirstName;
+            usersModel.Phone = model.Phone;
+            usersModel.City = model.Country;
+            usersModel.Country = model.City;
+            usersModel.LastName = model.LastName;
+            usersModel.Gender = model.Gender;
+            appDBContext.Users.Update(usersModel);
+            appDBContext.SaveChanges();
             return View();
         }
         [HttpPost]

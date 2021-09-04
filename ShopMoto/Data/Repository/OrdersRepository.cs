@@ -33,7 +33,6 @@ namespace ShopMoto.Data.Repository
                 appDBContext.OrderDetail.Add(orderDetail);
             }
             appDBContext.SaveChanges();
-            print();
         }
     }
 }
