@@ -72,7 +72,7 @@ namespace ShopMoto
                     OnRemoteFailure = OnFailure
                 };
             });
-            services.AddAuthorization(options =>
+            services.AddAuthorization(/*options =>
             {
                 options.AddPolicy("Administrator", builder =>
                 {
@@ -82,7 +82,7 @@ namespace ShopMoto
                 {
                     builder.RequireAssertion(x => x.User.HasClaim(ClaimTypes.Role, "Manager") || x.User.HasClaim(ClaimTypes.Role, "Administrator"));
                 });
-            });
+            }*/);
             /*services.AddIdentityCore<IdentityUser>(opt =>
             {
                 opt.Password.RequireDigit = false;
@@ -94,6 +94,7 @@ namespace ShopMoto
             services.AddTransient<IAllMoto, MotoRepository>();
             services.AddTransient<IMotoCategory, CategoryRepository>();
             services.AddTransient<IAllOrders, OrdersRepository>();
+            services.AddTransient<IBaseRepository, BaseRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sp => ShopCart.GetCart(sp));
             services.AddRazorPages();

@@ -35,18 +35,18 @@ namespace ShopMoto.Controllers
         {
             return View();
         }
-        [Authorize(Policy = "Administrator")]
-        public IActionResult Administrator()
-        {
-            return View();
-        }
+        /*        [Authorize(Policy = "Administrator")]
+                public IActionResult Administrator()
+                {
+                    return View();
+                }*/
 
-        [Authorize(Policy = "Manager")]
+/*        [Authorize(Policy = "Manager")]
         public IActionResult Manager()
         {
             return View();
         }
-        [AllowAnonymous]
+        [AllowAnonymous]*/
         public async Task<IActionResult> Login(string returnUrl)
         {
             var externalProviders = await _signInManager.GetExternalAuthenticationSchemesAsync();

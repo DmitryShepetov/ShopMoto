@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ShopMoto.Data.Model
@@ -13,6 +14,7 @@ namespace ShopMoto.Data.Model
         [Required]
         public string Email { get; set; }
         [Required]
+        [JsonIgnore]
         public string Password { get; set; }
         [StringLength(25)]
         [Required]
@@ -44,6 +46,7 @@ namespace ShopMoto.Data.Model
         {
 
         }
+        [JsonIgnore]
         public string Password { set; get; }
         [StringLength(25)]
         public string FirstName { get; set; }
