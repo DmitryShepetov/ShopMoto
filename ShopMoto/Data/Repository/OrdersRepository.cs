@@ -16,11 +16,11 @@ namespace ShopMoto.Data.Repository
             this.appDBContext = appDBContext;
             this.shopCart = shopCart;
         }
-        public void createOrder(Order order)
+        public async void createOrderAsync(Order order)
         {
             order.dateTime = DateTime.Now;
-            appDBContext.Order.Add(order);
-            appDBContext.SaveChanges();
+            await appDBContext.Order.AddAsync(order);
+            await appDBContext.SaveChangesAsync();
             var items = shopCart.listShopItems;
             foreach(var el in items)
             {
@@ -30,9 +30,9 @@ namespace ShopMoto.Data.Repository
                     orderID = order.id,
                     price = el.moto.price     
                 };
-                appDBContext.OrderDetail.Add(orderDetail);
+                await appDBContext.OrderDetail.AddAsync(orderDetail);
             }
-            appDBContext.SaveChanges();
+            await appDBContext.SaveChangesAsync();
         }
     }
 }

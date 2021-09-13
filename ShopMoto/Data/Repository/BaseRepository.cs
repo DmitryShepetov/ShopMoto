@@ -1,4 +1,5 @@
-﻿using ShopMoto.Data.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using ShopMoto.Data.Interfaces;
 using ShopMoto.Data.Model;
 using System;
 using System.Collections.Generic;
@@ -7,46 +8,39 @@ using System.Threading.Tasks;
 
 namespace ShopMoto.Data.Repository
 {
-    public class BaseRepository : IBaseRepository
+    public class BaseRepository 
     {
         private readonly AppDBContext appDBContext;
         public BaseRepository(AppDBContext appDBContext)
         {
             this.appDBContext = appDBContext;
         }
-        public User Create(User model)
+        public async Task<User> CreateAsync(User model)
         {
-            appDBContext.Set<User>().Add(model);
+            await appDBContext.Set<User>().AddAsync(model);
             appDBContext.SaveChanges();
             return model;
         }
 
-        public void Delete(Guid id)
+        public async void Delete(Guid id)
         {
-            var toDelete = appDBContext.Set<User>().FirstOrDefault(m => m.Id == id);
+            var toDelete = await appDBContext.Set<User>().FirstOrDefaultAsync(m => m.Id == id);
             appDBContext.Set<User>().Remove(toDelete);
-            appDBContext.SaveChanges();
+            await appDBContext.SaveChangesAsync();
         }
 
-        public User Get(Guid id)
-        {
-            return appDBContext.Set<User>().FirstOrDefault(m => m.Id == id);
-        }
+        public async Task<User> GetAsync(Guid id) => await appDBContext.Set<User>().FirstOrDefaultAsync(m => m.Id == id);
 
-        public List<User> GetAll()
+        public async Task<List<User>> GetAllAsync() => await appDBContext.Set<User>().ToListAsync();
+        public async Task<User> UpdateAsync(User model)
         {
-            return appDBContext.Set<User>().ToList();
-        }
-
-        public User Update(User model)
-        {
-            var toUpdate = appDBContext.Set<User>().FirstOrDefault(m => m.Id == model.Id);
+            var toUpdate = await appDBContext.Set<User>().FirstOrDefaultAsync(m => m.Id == model.Id);
             if (toUpdate != null)
             {
                 toUpdate = model;
             }
             appDBContext.Update(toUpdate);
-            appDBContext.SaveChanges();
+            await appDBContext.SaveChangesAsync();
             return toUpdate;
         }
     }

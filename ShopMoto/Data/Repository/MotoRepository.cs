@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShopMoto.Data.Repository
 {
-    public class MotoRepository : IAllMoto
+    public class MotoRepository
     {
         private readonly AppDBContext appDBContext;
 
@@ -20,7 +20,7 @@ namespace ShopMoto.Data.Repository
 
         public IEnumerable<Moto> getFavCars => appDBContext.Moto.Where(p => p.isFavourite).Include(c => c.Category);
 
-        public Moto getObjectCar(int carId) => appDBContext.Moto.FirstOrDefault(p => p.id == carId);
+        public async Task<Moto> getObjectCarAsync(int carId) => await appDBContext.Moto.FirstOrDefaultAsync(p => p.id == carId);
 
     }
 }

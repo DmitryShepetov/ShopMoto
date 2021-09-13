@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShopMoto.Data.Interfaces;
 using ShopMoto.Data.Model;
+using ShopMoto.Data.Repository;
 using ShopMoto.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,10 @@ namespace ShopMoto.Controllers
 {
     public class ShopCartController : Controller
     {
-        private readonly IAllMoto _motoRep;
+        private readonly MotoRepository _motoRep;
         private readonly ShopCart _shopCart;
 
-        public ShopCartController(IAllMoto motoRep, ShopCart shopCart)
+        public ShopCartController(MotoRepository motoRep, ShopCart shopCart)
         {
             _motoRep = motoRep;
             _shopCart = shopCart;

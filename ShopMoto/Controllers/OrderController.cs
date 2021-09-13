@@ -31,7 +31,7 @@ namespace ShopMoto.Controllers
             }
             else if(ModelState.IsValid)
             {
-                allOrders.createOrder(order);
+                allOrders.createOrderAsync(order);
                 return RedirectToAction("Complete");
             }
             return View(order);

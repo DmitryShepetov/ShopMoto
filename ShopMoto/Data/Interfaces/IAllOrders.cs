@@ -8,6 +8,6 @@ namespace ShopMoto.Data.Interfaces
 {
     public interface IAllOrders
     {
-        void createOrder(Order order);
+        void createOrderAsync(Order order);
     }
 }

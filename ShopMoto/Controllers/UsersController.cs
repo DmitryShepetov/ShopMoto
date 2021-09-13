@@ -15,8 +15,8 @@ namespace ShopMoto.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IBaseRepository User;
-        public UsersController(IBaseRepository user)
+        private readonly BaseRepository User;
+        public UsersController(BaseRepository user)
         {
             User = user;
         }
@@ -25,7 +25,7 @@ namespace ShopMoto.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            return new JsonResult(User.GetAll());
+            return new JsonResult(User.GetAllAsync());
         }
 
         // GET api/<Val
@@ -49,12 +49,12 @@ namespace ShopMoto.Controllers
         public JsonResult Put(User user)
         {
             bool success = true;
-            var document = User.Get(user.Id);
+            var document = User.GetAsync(user.Id);
             try
             {
                 if (document != null)
                 {
-                    document = User.Update(user);
+                    document = User.UpdateAsync(user);
                 }
                 else
                 {
@@ -74,7 +74,7 @@ namespace ShopMoto.Controllers
         public JsonResult Delete(Guid id)
         {
             bool success = true;
-            var document = User.Get(id);
+            var document = User.GetAsync(id);
 
             try
             {

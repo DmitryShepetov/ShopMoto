@@ -16,16 +16,16 @@ namespace ShopMoto.Data.Repository
             this.appDBContext = appDBContext;
             this.user = user;
         }
-        public void updateUser(User user)
+        public async void updateUserAsync(User user)
         {
 
             appDBContext.Users.Update(user);
-            appDBContext.SaveChanges();
+            await appDBContext.SaveChangesAsync();
         }
-        public void createUser(User user)
+        public async void createUserAsync(User user)
         {
-            appDBContext.Users.Add(user);
-            appDBContext.SaveChanges();
+            await appDBContext.Users.AddAsync(user);
+            await appDBContext.SaveChangesAsync();
         }
     }
 }

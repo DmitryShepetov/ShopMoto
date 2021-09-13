@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShopMoto.Data.Interfaces;
 using ShopMoto.Data.Model;
+using ShopMoto.Data.Repository;
 using ShopMoto.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,10 @@ namespace ShopMoto.Controllers
 {
     public class MotoController : Controller
     {
-        private readonly IAllMoto _allMoto;
+        private readonly MotoRepository _allMoto;
         private readonly IMotoCategory _allCategories;
 
-        public MotoController(IAllMoto iAllMoto, IMotoCategory iMotoCat)
+        public MotoController(MotoRepository iAllMoto, IMotoCategory iMotoCat)
         {
             _allMoto = iAllMoto;
             _allCategories = iMotoCat;
